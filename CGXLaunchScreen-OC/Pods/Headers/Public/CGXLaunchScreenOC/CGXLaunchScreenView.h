@@ -1,0 +1,1 @@
+../../../../../CGXLaunchScreenOC/BaseView/CGXLaunchScreenView.h

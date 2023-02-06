@@ -1,0 +1,37 @@
+PODS:
+  - CGXLaunchScreenOC (0.1):
+    - CGXLaunchScreenOC/AnimatedImage (= 0.1)
+    - CGXLaunchScreenOC/BaseView (= 0.1)
+    - CGXLaunchScreenOC/LaunchScreen (= 0.1)
+    - SDWebImage
+  - CGXLaunchScreenOC/AnimatedImage (0.1):
+    - SDWebImage
+  - CGXLaunchScreenOC/BaseView (0.1):
+    - SDWebImage
+  - CGXLaunchScreenOC/LaunchScreen (0.1):
+    - CGXLaunchScreenOC/AnimatedImage
+    - CGXLaunchScreenOC/BaseView
+    - SDWebImage
+  - SDWebImage (5.14.2):
+    - SDWebImage/Core (= 5.14.2)
+  - SDWebImage/Core (5.14.2)
+
+DEPENDENCIES:
+  - CGXLaunchScreenOC (from `../`)
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  CGXLaunchScreenOC:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CGXLaunchScreenOC: 66648c1b53d9bef467eb638624bf0474a36f3f67
+  SDWebImage: b9a731e1d6307f44ca703b3976d18c24ca561e84
+
+PODFILE CHECKSUM: d570fdf664eea43698a07e047fd950ba6534f032
+
+COCOAPODS: 1.11.3

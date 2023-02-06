@@ -1,0 +1,52 @@
+{
+  "name": "CGXLaunchScreenOC",
+  "version": "0.1",
+  "summary": "CGXLaunchScreenOC是集成开屏广告库",
+  "description": "CGXLaunchScreenOC封装的热门开屏广告",
+  "homepage": "https://github.com/974794055/CGXLaunchScreenOC",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "974794055": "974794055@qq.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/974794055/CGXLaunchScreenOC.git",
+    "tag": "0.1"
+  },
+  "frameworks": "UIKit",
+  "requires_arc": true,
+  "source_files": "CGXLaunchScreenOC/CGXLaunchScreenOC.h",
+  "public_header_files": "CGXLaunchScreenOC/CGXLaunchScreenOC.h",
+  "dependencies": {
+    "SDWebImage": [
+
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "AnimatedImage",
+      "source_files": "CGXLaunchScreenOC/AnimatedImage/**/*.{h,m}"
+    },
+    {
+      "name": "BaseView",
+      "source_files": "CGXLaunchScreenOC/BaseView/**/*.{h,m}"
+    },
+    {
+      "name": "LaunchScreen",
+      "source_files": "CGXLaunchScreenOC/LaunchScreen/**/*.{h,m}",
+      "dependencies": {
+        "CGXLaunchScreenOC/BaseView": [
+
+        ],
+        "CGXLaunchScreenOC/AnimatedImage": [
+
+        ]
+      }
+    }
+  ]
+}

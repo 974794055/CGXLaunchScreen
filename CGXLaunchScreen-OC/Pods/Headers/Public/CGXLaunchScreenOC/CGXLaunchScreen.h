@@ -1,0 +1,1 @@
+../../../../../CGXLaunchScreenOC/LaunchScreen/CGXLaunchScreen.h

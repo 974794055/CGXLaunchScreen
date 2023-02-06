@@ -1,0 +1,438 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		040EC1E622D5C07800F20C26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 040EC1E522D5C07800F20C26 /* AppDelegate.m */; };
+		040EC1EC22D5C07800F20C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040EC1EA22D5C07800F20C26 /* Main.storyboard */; };
+		040EC1EE22D5C07900F20C26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 040EC1ED22D5C07900F20C26 /* Assets.xcassets */; };
+		040EC1F122D5C07900F20C26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040EC1EF22D5C07900F20C26 /* LaunchScreen.storyboard */; };
+		040EC1F422D5C07900F20C26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 040EC1F322D5C07900F20C26 /* main.m */; };
+		040EC23922D5C09700F20C26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040EC20322D5C09600F20C26 /* ViewController.m */; };
+		040EC23B22D5C09700F20C26 /* CGXLaunchScreenManagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040EC20722D5C09600F20C26 /* CGXLaunchScreenManagerModel.m */; };
+		040EC24922D5C09700F20C26 /* CGXLaunchScreenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 040EC22922D5C09600F20C26 /* CGXLaunchScreenManager.m */; };
+		040EC24B22D5C09700F20C26 /* video0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 040EC22C22D5C09700F20C26 /* video0.mp4 */; };
+		040EC24C22D5C09700F20C26 /* video1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 040EC22D22D5C09700F20C26 /* video1.mp4 */; };
+		040EC25222D5C09700F20C26 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 040EC23322D5C09700F20C26 /* image2.jpg */; };
+		040EC25322D5C09700F20C26 /* image11.gif in Resources */ = {isa = PBXBuildFile; fileRef = 040EC23422D5C09700F20C26 /* image11.gif */; };
+		9B8FAA1FD513EACE8A9AD914 /* libPods-CGXLaunchScreen-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5B5A1F5B7322E40BC49AE9 /* libPods-CGXLaunchScreen-OC.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		040EC1E122D5C07800F20C26 /* CGXLaunchScreen-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CGXLaunchScreen-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		040EC1E422D5C07800F20C26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		040EC1E522D5C07800F20C26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		040EC1EB22D5C07800F20C26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		040EC1ED22D5C07900F20C26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		040EC1F022D5C07900F20C26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		040EC1F222D5C07900F20C26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		040EC1F322D5C07900F20C26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		040EC20322D5C09600F20C26 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		040EC20622D5C09600F20C26 /* CGXLaunchScreenManagerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGXLaunchScreenManagerModel.h; sourceTree = "<group>"; };
+		040EC20722D5C09600F20C26 /* CGXLaunchScreenManagerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGXLaunchScreenManagerModel.m; sourceTree = "<group>"; };
+		040EC20822D5C09600F20C26 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		040EC20A22D5C09600F20C26 /* CGXLaunchScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGXLaunchScreenManager.h; sourceTree = "<group>"; };
+		040EC22922D5C09600F20C26 /* CGXLaunchScreenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGXLaunchScreenManager.m; sourceTree = "<group>"; };
+		040EC22C22D5C09700F20C26 /* video0.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video0.mp4; sourceTree = "<group>"; };
+		040EC22D22D5C09700F20C26 /* video1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video1.mp4; sourceTree = "<group>"; };
+		040EC23322D5C09700F20C26 /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
+		040EC23422D5C09700F20C26 /* image11.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = image11.gif; sourceTree = "<group>"; };
+		105E8E8DB55E8A3340185B5A /* Pods-CGXLaunchScreen-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CGXLaunchScreen-OC.release.xcconfig"; path = "Target Support Files/Pods-CGXLaunchScreen-OC/Pods-CGXLaunchScreen-OC.release.xcconfig"; sourceTree = "<group>"; };
+		7A5B5A1F5B7322E40BC49AE9 /* libPods-CGXLaunchScreen-OC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CGXLaunchScreen-OC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9E25B849E2D64C1726C07B5 /* Pods-CGXLaunchScreen-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CGXLaunchScreen-OC.debug.xcconfig"; path = "Target Support Files/Pods-CGXLaunchScreen-OC/Pods-CGXLaunchScreen-OC.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		040EC1DE22D5C07800F20C26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B8FAA1FD513EACE8A9AD914 /* libPods-CGXLaunchScreen-OC.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		040EC1D822D5C07800F20C26 = {
+			isa = PBXGroup;
+			children = (
+				040EC1E322D5C07800F20C26 /* CGXLaunchScreen-OC */,
+				040EC1E222D5C07800F20C26 /* Products */,
+				8EFFD994F02153E1B05D6A15 /* Pods */,
+				10368D3A53BC3D005EC6CB33 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		040EC1E222D5C07800F20C26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				040EC1E122D5C07800F20C26 /* CGXLaunchScreen-OC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		040EC1E322D5C07800F20C26 /* CGXLaunchScreen-OC */ = {
+			isa = PBXGroup;
+			children = (
+				040EC1E422D5C07800F20C26 /* AppDelegate.h */,
+				040EC1E522D5C07800F20C26 /* AppDelegate.m */,
+				040EC20822D5C09600F20C26 /* ViewController.h */,
+				040EC20322D5C09600F20C26 /* ViewController.m */,
+				040EC20A22D5C09600F20C26 /* CGXLaunchScreenManager.h */,
+				040EC22922D5C09600F20C26 /* CGXLaunchScreenManager.m */,
+				040EC20622D5C09600F20C26 /* CGXLaunchScreenManagerModel.h */,
+				040EC20722D5C09600F20C26 /* CGXLaunchScreenManagerModel.m */,
+				040EC22C22D5C09700F20C26 /* video0.mp4 */,
+				040EC22D22D5C09700F20C26 /* video1.mp4 */,
+				040EC23322D5C09700F20C26 /* image2.jpg */,
+				040EC23422D5C09700F20C26 /* image11.gif */,
+				040EC1EA22D5C07800F20C26 /* Main.storyboard */,
+				040EC1ED22D5C07900F20C26 /* Assets.xcassets */,
+				040EC1EF22D5C07900F20C26 /* LaunchScreen.storyboard */,
+				040EC1F222D5C07900F20C26 /* Info.plist */,
+				040EC1F322D5C07900F20C26 /* main.m */,
+			);
+			path = "CGXLaunchScreen-OC";
+			sourceTree = "<group>";
+		};
+		10368D3A53BC3D005EC6CB33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A5B5A1F5B7322E40BC49AE9 /* libPods-CGXLaunchScreen-OC.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EFFD994F02153E1B05D6A15 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B9E25B849E2D64C1726C07B5 /* Pods-CGXLaunchScreen-OC.debug.xcconfig */,
+				105E8E8DB55E8A3340185B5A /* Pods-CGXLaunchScreen-OC.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		040EC1E022D5C07800F20C26 /* CGXLaunchScreen-OC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 040EC1F722D5C07900F20C26 /* Build configuration list for PBXNativeTarget "CGXLaunchScreen-OC" */;
+			buildPhases = (
+				D7C1005AAD8ED71E95E0B770 /* [CP] Check Pods Manifest.lock */,
+				040EC1DD22D5C07800F20C26 /* Sources */,
+				040EC1DE22D5C07800F20C26 /* Frameworks */,
+				040EC1DF22D5C07800F20C26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CGXLaunchScreen-OC";
+			productName = "CGXLaunchScreen-OC";
+			productReference = 040EC1E122D5C07800F20C26 /* CGXLaunchScreen-OC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		040EC1D922D5C07800F20C26 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = CGX;
+				TargetAttributes = {
+					040EC1E022D5C07800F20C26 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 040EC1DC22D5C07800F20C26 /* Build configuration list for PBXProject "CGXLaunchScreen-OC" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 040EC1D822D5C07800F20C26;
+			productRefGroup = 040EC1E222D5C07800F20C26 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				040EC1E022D5C07800F20C26 /* CGXLaunchScreen-OC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		040EC1DF22D5C07800F20C26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				040EC25322D5C09700F20C26 /* image11.gif in Resources */,
+				040EC24C22D5C09700F20C26 /* video1.mp4 in Resources */,
+				040EC1F122D5C07900F20C26 /* LaunchScreen.storyboard in Resources */,
+				040EC1EE22D5C07900F20C26 /* Assets.xcassets in Resources */,
+				040EC25222D5C09700F20C26 /* image2.jpg in Resources */,
+				040EC24B22D5C09700F20C26 /* video0.mp4 in Resources */,
+				040EC1EC22D5C07800F20C26 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D7C1005AAD8ED71E95E0B770 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CGXLaunchScreen-OC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		040EC1DD22D5C07800F20C26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				040EC24922D5C09700F20C26 /* CGXLaunchScreenManager.m in Sources */,
+				040EC23922D5C09700F20C26 /* ViewController.m in Sources */,
+				040EC23B22D5C09700F20C26 /* CGXLaunchScreenManagerModel.m in Sources */,
+				040EC1F422D5C07900F20C26 /* main.m in Sources */,
+				040EC1E622D5C07800F20C26 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		040EC1EA22D5C07800F20C26 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				040EC1EB22D5C07800F20C26 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		040EC1EF22D5C07900F20C26 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				040EC1F022D5C07900F20C26 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		040EC1F522D5C07900F20C26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		040EC1F622D5C07900F20C26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		040EC1F822D5C07900F20C26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9E25B849E2D64C1726C07B5 /* Pods-CGXLaunchScreen-OC.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_TEAM = AA9R26989C;
+				INFOPLIST_FILE = "CGXLaunchScreen-OC/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = CGXLaunchScreenOC;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CGX.CGXLaunchScreenOC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		040EC1F922D5C07900F20C26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 105E8E8DB55E8A3340185B5A /* Pods-CGXLaunchScreen-OC.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_TEAM = AA9R26989C;
+				INFOPLIST_FILE = "CGXLaunchScreen-OC/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = CGXLaunchScreenOC;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CGX.CGXLaunchScreenOC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		040EC1DC22D5C07800F20C26 /* Build configuration list for PBXProject "CGXLaunchScreen-OC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				040EC1F522D5C07900F20C26 /* Debug */,
+				040EC1F622D5C07900F20C26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		040EC1F722D5C07900F20C26 /* Build configuration list for PBXNativeTarget "CGXLaunchScreen-OC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				040EC1F822D5C07900F20C26 /* Debug */,
+				040EC1F922D5C07900F20C26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 040EC1D922D5C07800F20C26 /* Project object */;
+}
