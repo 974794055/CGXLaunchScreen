@@ -7,7 +7,8 @@
 // 
 
 #import "CGXLaunchScreen.h"
-
+#import "CGXLaunchScreenConst.h"
+#import "CGXLaunchAnimatedImage.h"
 
 typedef NS_ENUM(NSInteger, CGXLaunchScreenType) {
     CGXLaunchScreenTypeImage,
@@ -138,7 +139,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
 - (instancetype)init{
     self = [super init];
     if (self) {
-        XHWeakSelf
+        __weak typeof(self) weakSelf = self;
         [self setupLaunchAd];
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             [self setupLaunchAdEnterForeground];
@@ -177,7 +178,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
 
 -(void)setupLaunchAd{
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    window.rootViewController = [CGXLaunchScreenController new];
+    window.rootViewController = [[CGXLaunchScreenController alloc] init];
     window.rootViewController.view.backgroundColor = [UIColor clearColor];
     window.rootViewController.view.userInteractionEnabled = NO;
     window.windowLevel = UIWindowLevelStatusBar + 1;
@@ -198,14 +199,14 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
     if(configuration.frame.size.width>0 && configuration.frame.size.height>0) adImageView.frame = configuration.frame;
     if(configuration.contentMode) adImageView.contentMode = configuration.contentMode;
     /** webImage */
-    if(configuration.imageNameOrURLString.length && XHISURLString(configuration.imageNameOrURLString)){
+    if(configuration.imageNameOrURLString.length && GXLaunchIsURLString(configuration.imageNameOrURLString)){
         [CGXLaunchScreenCache async_saveImageUrl:configuration.imageNameOrURLString];
         /** 自设图片 */
         if ([self.delegate respondsToSelector:@selector(gxLaunchAd:launchAdImageView:URL:)]) {
             [self.delegate gxLaunchAd:self launchAdImageView:adImageView URL:[NSURL URLWithString:configuration.imageNameOrURLString]];
         }else{
             if(!configuration.imageOption) configuration.imageOption = CGXLaunchScreenImageDefault;
-            XHWeakSelf
+            __weak typeof(self) weakSelf = self;
             [adImageView gx_setImageWithURL:[NSURL URLWithString:configuration.imageNameOrURLString] placeholderImage:nil GIFImageCycleOnce:configuration.GIFImageCycleOnce options:configuration.imageOption GIFImageCycleOnceFinish:^{
                 //GIF不循环,播放完成
                 [[NSNotificationCenter defaultCenter] postNotificationName:CGXLaunchScreenGIFImageCycleOnceFinishNotification object:nil userInfo:@{@"imageNameOrURLString":configuration.imageNameOrURLString}];
@@ -226,8 +227,8 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
         }
     }else{
         if(configuration.imageNameOrURLString.length){
-            NSData *data = XHDataWithFileName(configuration.imageNameOrURLString);
-            if(XHISGIFTypeWithData(data)){
+            NSData *data = GXLaunchDataWithFileName(configuration.imageNameOrURLString);
+            if(GXLaunchISGIFTypeWithData(data)){
                 CGXLaunchAnimatedImage *image = [CGXLaunchAnimatedImage animatedImageWithGIFData:data];
                 adImageView.animatedImage = image;
                 adImageView.image = nil;
@@ -255,7 +256,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
     [self startSkipDispathTimer];
     /** customView */
     if(configuration.subViews.count>0)  [self addSubViews:configuration.subViews];
-    XHWeakSelf
+    __weak typeof(self) weakSelf = self;
     adImageView.click = ^(CGPoint point) {
         [weakSelf clickAndPoint:point];
     };
@@ -263,7 +264,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
 
 -(void)addSkipButtonForConfiguration:(CGXLaunchScreenConfiguration *)configuration{
     if(!configuration.duration) configuration.duration = 5;
-    if(!configuration.skipButtonType) configuration.skipButtonType = SkipTypeTimeText;
+    if(!configuration.skipButtonType) configuration.skipButtonType = CGXLaunchSkipTypeTimeText;
     if(configuration.customSkipView){
         [_window addSubview:configuration.customSkipView];
     }else{
@@ -287,10 +288,6 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
     [_window addSubview:_adVideoView];
     /** frame */
     if(configuration.frame.size.width>0&&configuration.frame.size.height>0) _adVideoView.frame = configuration.frame;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored"-Wdeprecated-declarations"
-    if(configuration.scalingMode) _adVideoView.videoScalingMode = configuration.scalingMode;
-#pragma clang diagnostic pop
     if(configuration.videoGravity) _adVideoView.videoGravity = configuration.videoGravity;
     _adVideoView.videoCycleOnce = configuration.videoCycleOnce;
     if(configuration.videoCycleOnce){
@@ -300,7 +297,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
         }];
     }
     /** video 数据源 */
-    if(configuration.videoNameOrURLString.length && XHISURLString(configuration.videoNameOrURLString)){
+    if(configuration.videoNameOrURLString.length && GXLaunchIsURLString(configuration.videoNameOrURLString)){
         [CGXLaunchScreenCache async_saveVideoUrl:configuration.videoNameOrURLString];
         NSURL *pathURL = [CGXLaunchScreenCache getCacheVideoWithURL:[NSURL URLWithString:configuration.videoNameOrURLString]];
         if(pathURL){
@@ -311,7 +308,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
             _adVideoView.muted = configuration.muted;
             [_adVideoView.videoPlayer.player play];
         }else{
-            XHWeakSelf
+            __weak typeof(self) weakSelf = self;
             [[CGXLaunchScreenDownloader sharedDownloader] downloadVideoWithURL:[NSURL URLWithString:configuration.videoNameOrURLString] progress:^(unsigned long long total, unsigned long long current) {
                 if ([weakSelf.delegate respondsToSelector:@selector(gxLaunchAd:videoDownLoadProgress:total:current:)]) {
                     [weakSelf.delegate gxLaunchAd:self videoDownLoadProgress:current/(float)total total:total current:current];
@@ -362,7 +359,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
     [self startSkipDispathTimer];
     /** customView */
     if(configuration.subViews.count>0) [self addSubViews:configuration.subViews];
-    XHWeakSelf
+    __weak typeof(self) weakSelf = self;
     _adVideoView.click = ^(CGPoint point) {
         [weakSelf clickAndPoint:point];
     };
@@ -443,7 +440,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
     dispatch_source_set_timer(_waitDataTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(weakSelf.waitDataTimer, ^{
         if(duration==0){
-            DISPATCH_SOURCE_CANCEL_SAFE(weakSelf.waitDataTimer);
+            GXLaunchDISPATCH_SOURCE_CANCEL_SAFE(weakSelf.waitDataTimer);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:CGXLaunchScreenWaitDataDurationArriveNotification object:nil];
                 [self remove];
@@ -458,11 +455,11 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
 -(void)startSkipDispathTimer{
      __weak typeof(self) weakSelf = self;
     CGXLaunchScreenConfiguration * configuration = [self commonConfiguration];
-    DISPATCH_SOURCE_CANCEL_SAFE(_waitDataTimer);
-    if(!configuration.skipButtonType) configuration.skipButtonType = SkipTypeTimeText;//默认
+    GXLaunchDISPATCH_SOURCE_CANCEL_SAFE(_waitDataTimer);
+    if(!configuration.skipButtonType) configuration.skipButtonType = CGXLaunchSkipTypeTimeText;//默认
     __block NSInteger duration = 5;//默认
     if(configuration.duration) duration = configuration.duration;
-    if(configuration.skipButtonType == SkipTypeRoundProgressTime || configuration.skipButtonType == SkipTypeRoundProgressText){
+    if(configuration.skipButtonType == CGXLaunchSkipTypeRoundProgressTime || configuration.skipButtonType == CGXLaunchSkipTypeRoundProgressText){
         [_skipButton startRoundDispathTimerWithDuration:duration];
     }
     NSTimeInterval period = 1.0;
@@ -477,7 +474,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
                 [weakSelf.skipButton setTitleWithSkipType:configuration.skipButtonType duration:duration];
             }
             if(duration==0){
-                DISPATCH_SOURCE_CANCEL_SAFE(weakSelf.skipTimer);
+                GXLaunchDISPATCH_SOURCE_CANCEL_SAFE(weakSelf.skipTimer);
                 [self removeAndAnimate]; return ;
             }
             duration--;
@@ -490,18 +487,18 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
     
     __weak typeof(self) weakSelf = self;
     CGXLaunchScreenConfiguration * configuration = [self commonConfiguration];
-    CGFloat duration = showFinishAnimateTimeDefault;
-    if(configuration.showFinishAnimateTime>0) duration = configuration.showFinishAnimateTime;
-    switch (configuration.showFinishAnimate) {
-        case ShowFinishAnimateNone:{
+    CGFloat duration = CGXLaunchShowFinishAnimateTimeDefault;
+    if(configuration.CGXLaunchShowFinishAnimateTime>0) duration = configuration.CGXLaunchShowFinishAnimateTime;
+    switch (configuration.CGXLaunchShowFinishAnimate) {
+        case CGXLaunchShowFinishAnimateNone:{
             [self remove];
         }
             break;
-        case ShowFinishAnimateFadein:{
+        case CGXLaunchShowFinishAnimateFadein:{
             [self removeAndAnimateDefault];
         }
             break;
-        case ShowFinishAnimateLite:{
+        case CGXLaunchShowFinishAnimateLite:{
             [UIView transitionWithView:_window duration:duration options:UIViewAnimationOptionCurveEaseOut animations:^{
                 weakSelf.window.transform = CGAffineTransformMakeScale(1.5, 1.5);
                 weakSelf.window.alpha = 0;
@@ -510,7 +507,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
             }];
         }
             break;
-        case ShowFinishAnimateFlipFromLeft:{
+        case CGXLaunchShowFinishAnimateFlipFromLeft:{
             [UIView transitionWithView:_window duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
                 weakSelf.window.alpha = 0;
             } completion:^(BOOL finished) {
@@ -518,7 +515,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
             }];
         }
             break;
-        case ShowFinishAnimateFlipFromBottom:{
+        case CGXLaunchShowFinishAnimateFlipFromBottom:{
             [UIView transitionWithView:_window duration:duration options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
                 weakSelf.window.alpha = 0;
             } completion:^(BOOL finished) {
@@ -526,7 +523,7 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
             }];
         }
             break;
-        case ShowFinishAnimateCurlUp:{
+        case CGXLaunchShowFinishAnimateCurlUp:{
             [UIView transitionWithView:_window duration:duration options:UIViewAnimationOptionTransitionCurlUp animations:^{
                 weakSelf.window.alpha = 0;
             } completion:^(BOOL finished) {
@@ -543,8 +540,8 @@ static  CGXLaunchImageViewLaunchType _sourceType = CGXLaunchImageViewLaunchTypeL
 
 -(void)removeAndAnimateDefault{
     CGXLaunchScreenConfiguration * configuration = [self commonConfiguration];
-    CGFloat duration = showFinishAnimateTimeDefault;
-    if(configuration.showFinishAnimateTime>0) duration = configuration.showFinishAnimateTime;
+    CGFloat duration = CGXLaunchShowFinishAnimateTimeDefault;
+    if(configuration.CGXLaunchShowFinishAnimateTime>0) duration = configuration.CGXLaunchShowFinishAnimateTime;
 __weak typeof(self) weakSelf = self;
     [UIView transitionWithView:_window duration:duration options:UIViewAnimationOptionTransitionNone animations:^{
         weakSelf.window.alpha = 0;
@@ -553,18 +550,18 @@ __weak typeof(self) weakSelf = self;
     }];
 }
 -(void)removeOnly{
-    DISPATCH_SOURCE_CANCEL_SAFE(_waitDataTimer)
-    DISPATCH_SOURCE_CANCEL_SAFE(_skipTimer)
-    REMOVE_FROM_SUPERVIEW_SAFE(_skipButton)
+    GXLaunchDISPATCH_SOURCE_CANCEL_SAFE(_waitDataTimer)
+    GXLaunchDISPATCH_SOURCE_CANCEL_SAFE(_skipTimer)
+    GXLaunchREMOVE_FROM_SUPERVIEW_SAFE(_skipButton)
     if(_launchAdType==CGXLaunchScreenTypeVideo){
         if(_adVideoView){
             [_adVideoView stopVideoPlayer];
-            REMOVE_FROM_SUPERVIEW_SAFE(_adVideoView)
+            GXLaunchREMOVE_FROM_SUPERVIEW_SAFE(_adVideoView)
         }
     }
     if(_window){
         [_window.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            REMOVE_FROM_SUPERVIEW_SAFE(obj)
+            GXLaunchREMOVE_FROM_SUPERVIEW_SAFE(obj)
         }];
         _window.hidden = YES;
         _window = nil;
@@ -581,7 +578,7 @@ __weak typeof(self) weakSelf = self;
 -(void)removeSubViewsExceptLaunchAdImageView{
     [_window.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if(![obj isKindOfClass:[CGXLaunchImageView class]]){
-            REMOVE_FROM_SUPERVIEW_SAFE(obj)
+            GXLaunchREMOVE_FROM_SUPERVIEW_SAFE(obj)
         }
     }];
 }

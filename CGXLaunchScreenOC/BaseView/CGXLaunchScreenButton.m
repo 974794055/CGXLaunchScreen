@@ -21,7 +21,7 @@
 #define DurationUnit @"S"
 
 @interface CGXLaunchScreenButton()
-@property(nonatomic,assign)SkipType skipType;
+@property(nonatomic,assign)CGXLaunchSkipType skipType;
 @property(nonatomic,assign)CGFloat leftRightSpace;
 @property(nonatomic,assign)CGFloat topBottomSpace;
 @property(nonatomic,strong)UILabel *timeLab;
@@ -31,55 +31,55 @@
 
 @implementation CGXLaunchScreenButton
 
-- (instancetype)initWithSkipType:(SkipType)skipType{
+- (instancetype)initWithSkipType:(CGXLaunchSkipType)skipType{
     self = [super init];
     if (self) {
         
         _skipType = skipType;
-        CGFloat y = XH_FULLSCREEN ? 44 : 20;
+        CGFloat y = GXLaunchFullScreen ? 44 : 20;
         //环形
-        if(skipType == SkipTypeRoundTime || skipType ==SkipTypeRoundText || skipType == SkipTypeRoundProgressTime || skipType == SkipTypeRoundProgressText){
-            self.frame = CGRectMake(XH_ScreenW-55,y, 42, 42);
+        if(skipType == CGXLaunchSkipTypeRoundTime || skipType ==CGXLaunchSkipTypeRoundText || skipType == CGXLaunchSkipTypeRoundProgressTime || skipType == CGXLaunchSkipTypeRoundProgressText){
+            self.frame = CGRectMake(GXLaunchScreenW-55,y, 42, 42);
         }else{//方形
-             self.frame = CGRectMake(XH_ScreenW-80,y, 70, 35);
+             self.frame = CGRectMake(GXLaunchScreenW-80,y, 70, 35);
         }
         switch (skipType) {
-            case SkipTypeNone:{
+            case CGXLaunchSkipTypeNone:{
                 self.hidden = YES;
             }
                 break;
-            case SkipTypeTime:{
+            case CGXLaunchSkipTypeTime:{
                 [self addSubview:self.timeLab];
                 self.leftRightSpace = 5;
                 self.topBottomSpace = 2.5;
             }
                 break;
-            case SkipTypeText:{
+            case CGXLaunchSkipTypeText:{
                 [self addSubview:self.timeLab];
                 self.leftRightSpace = 5;
                 self.topBottomSpace = 2.5;
             }
                 break;
-            case SkipTypeTimeText:{
+            case CGXLaunchSkipTypeTimeText:{
                 [self addSubview:self.timeLab];
                 self.leftRightSpace = 5;
                 self.topBottomSpace = 2.5;
             }
                 break;
-            case SkipTypeRoundTime:{
+            case CGXLaunchSkipTypeRoundTime:{
                 [self addSubview:self.timeLab];
             }
                 break;
-            case SkipTypeRoundText:{
+            case CGXLaunchSkipTypeRoundText:{
                 [self addSubview:self.timeLab];
             }
                 break;
-            case SkipTypeRoundProgressTime:{
+            case CGXLaunchSkipTypeRoundProgressTime:{
                 [self addSubview:self.timeLab];
                 [self.timeLab.layer addSublayer:self.roundLayer];
             }
                 break;
-            case SkipTypeRoundProgressText:{
+            case CGXLaunchSkipTypeRoundProgressText:{
                 [self addSubview:self.timeLab];
                 [self.timeLab.layer addSublayer:self.roundLayer];
             }
@@ -119,44 +119,44 @@
     return _roundLayer;
 }
 
-- (void)setTitleWithSkipType:(SkipType)skipType duration:(NSInteger)duration{
+- (void)setTitleWithSkipType:(CGXLaunchSkipType)skipType duration:(NSInteger)duration{
     
     switch (skipType) {
-        case SkipTypeNone:{
+        case CGXLaunchSkipTypeNone:{
             self.hidden = YES;
         }
             break;
-        case SkipTypeTime:{
+        case CGXLaunchSkipTypeTime:{
             self.hidden = NO;
             self.timeLab.text = [NSString stringWithFormat:@"%ld %@",duration,DurationUnit];
         }
             break;
-        case SkipTypeText:{
+        case CGXLaunchSkipTypeText:{
             self.hidden = NO;
             self.timeLab.text = SkipTitle;
         }
             break;
-        case SkipTypeTimeText:{
+        case CGXLaunchSkipTypeTimeText:{
             self.hidden = NO;
             self.timeLab.text = [NSString stringWithFormat:@"%ld %@",duration,SkipTitle];
         }
             break;
-        case SkipTypeRoundTime:{
+        case CGXLaunchSkipTypeRoundTime:{
             self.hidden = NO;
             self.timeLab.text = [NSString stringWithFormat:@"%ld %@",duration,DurationUnit];
         }
             break;
-        case SkipTypeRoundText:{
+        case CGXLaunchSkipTypeRoundText:{
             self.hidden = NO;
             self.timeLab.text = SkipTitle;
         }
             break;
-        case SkipTypeRoundProgressTime:{
+        case CGXLaunchSkipTypeRoundProgressTime:{
             self.hidden = NO;
             self.timeLab.text = [NSString stringWithFormat:@"%ld %@",duration,DurationUnit];
         }
             break;
-        case SkipTypeRoundProgressText:{
+        case CGXLaunchSkipTypeRoundProgressText:{
             self.hidden = NO;
             self.timeLab.text = SkipTitle;
         }
@@ -175,7 +175,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if(roundDuration<=0){
                 self.roundLayer.strokeStart = 1;
-                DISPATCH_SOURCE_CANCEL_SAFE(self.roundTimer);
+                GXLaunchDISPATCH_SOURCE_CANCEL_SAFE(self.roundTimer);
             }
             self.roundLayer.strokeStart += 1/(duration/period);
             roundDuration -= period;

@@ -117,29 +117,6 @@ static NSString *const VideoPlayStatus = @"status";
     _muted = muted;
     _videoPlayer.player.muted = muted;
 }
--(void)setVideoScalingMode:(MPMovieScalingMode)videoScalingMode{
-    _videoScalingMode = videoScalingMode;
-    switch (_videoScalingMode) {
-        case MPMovieScalingModeNone:{
-            _videoPlayer.videoGravity = AVLayerVideoGravityResizeAspect;
-        }
-            break;
-        case MPMovieScalingModeAspectFit:{
-            _videoPlayer.videoGravity = AVLayerVideoGravityResizeAspect;
-        }
-            break;
-        case MPMovieScalingModeAspectFill:{
-            _videoPlayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-        }
-            break;
-        case MPMovieScalingModeFill:{
-            _videoPlayer.videoGravity = AVLayerVideoGravityResize;
-        }
-            break;
-        default:
-            break;
-    }
-}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -7,7 +7,9 @@
 //
 
 #import "CGXLaunchScreenImageView.h"
+#import "CGXLaunchAnimatedImage.h"
 
+#import "CGXLaunchScreenConst.h"
 @implementation CGXLaunchScreenImageView
 
 - (id)init{
@@ -50,26 +52,26 @@
     [self gx_setImageWithURL:url placeholderImage:placeholder options:options completed:nil];
 }
 
-- (void)gx_setImageWithURL:(nonnull NSURL *)url completed:(nullable XHExternalCompletionBlock)completedBlock {
+- (void)gx_setImageWithURL:(nonnull NSURL *)url completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock {
     
     [self gx_setImageWithURL:url placeholderImage:nil completed:completedBlock];
 }
 
-- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder completed:(nullable XHExternalCompletionBlock)completedBlock{
+- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock{
     [self gx_setImageWithURL:url placeholderImage:placeholder options:CGXLaunchScreenImageDefault completed:completedBlock];
 }
 
--(void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder options:(CGXLaunchScreenImageOptions)options completed:(nullable XHExternalCompletionBlock)completedBlock{
+-(void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder options:(CGXLaunchScreenImageOptions)options completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock{
     [self gx_setImageWithURL:url placeholderImage:placeholder GIFImageCycleOnce:NO options:options GIFImageCycleOnceFinish:nil completed:completedBlock ];
 }
 
-- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder GIFImageCycleOnce:(BOOL)GIFImageCycleOnce options:(CGXLaunchScreenImageOptions)options GIFImageCycleOnceFinish:(void(^_Nullable)(void))cycleOnceFinishBlock completed:(nullable XHExternalCompletionBlock)completedBlock {
+- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder GIFImageCycleOnce:(BOOL)GIFImageCycleOnce options:(CGXLaunchScreenImageOptions)options GIFImageCycleOnceFinish:(void(^_Nullable)(void))cycleOnceFinishBlock completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock {
     if(placeholder) self.image = placeholder;
     if(!url) return;
-    XHWeakSelf
+    __weak typeof(self) weakSelf = self;
     [[CGXLaunchScreenImageManager sharedManager] loadImageWithURL:url options:options progress:nil completed:^(UIImage * _Nullable image,  NSData *_Nullable imageData, NSError * _Nullable error, NSURL * _Nullable imageURL) {
         if(!error){
-            if(XHISGIFTypeWithData(imageData)){
+            if(GXLaunchISGIFTypeWithData(imageData)){
                 weakSelf.image = nil;
                 weakSelf.animatedImage = [CGXLaunchAnimatedImage animatedImageWithGIFData:imageData];
                 weakSelf.loopCompletionBlock = ^(NSUInteger loopCountRemaining) {

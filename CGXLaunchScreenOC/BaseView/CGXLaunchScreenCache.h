@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^SaveCompletionBlock)(BOOL result , NSURL * URL);
+typedef void(^CGXLaunchSaveCompletionBlock)(BOOL result , NSURL * URL);
 
 @interface CGXLaunchScreenCache : NSObject
 
@@ -49,7 +49,7 @@ typedef void(^SaveCompletionBlock)(BOOL result , NSURL * URL);
  @param url 图片url
  @param completedBlock 结果回调
  */
-+(void)async_saveImageData:(NSData *)data imageURL:(NSURL *)url completed:(nullable SaveCompletionBlock)completedBlock;
++(void)async_saveImageData:(NSData *)data imageURL:(NSURL *)url completed:(nullable CGXLaunchSaveCompletionBlock)completedBlock;
 
 /**
  *  检查是否已缓存在该图片
@@ -105,7 +105,7 @@ typedef void(^SaveCompletionBlock)(BOOL result , NSURL * URL);
  @param url  视频url
  @param completedBlock 结果回调
  */
-+(void)async_saveVideoAtLocation:(NSURL *)location URL:(NSURL *)url completed:(nullable SaveCompletionBlock)completedBlock;;
++(void)async_saveVideoAtLocation:(NSURL *)location URL:(NSURL *)url completed:(nullable CGXLaunchSaveCompletionBlock)completedBlock;;
 
 /**
  *  生成视频路径 for url
@@ -186,7 +186,7 @@ typedef void(^SaveCompletionBlock)(BOOL result , NSURL * URL);
 +(void)clearDiskCacheExceptVideoUrlArray:(NSArray<NSURL *> *)exceptVideoUrlArray;
 
 /**
- *  获取XHLaunch本地缓存大小(M)
+ *  获取CGXLaunch本地缓存大小(M)
  */
 +(float)diskCacheSize;
 

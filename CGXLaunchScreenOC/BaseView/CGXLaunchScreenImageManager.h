@@ -21,11 +21,11 @@ typedef NS_OPTIONS(NSUInteger, CGXLaunchScreenImageOptions) {
     CGXLaunchScreenImageCacheInBackground = 1 << 3
 };
 
-typedef void(^XHExternalCompletionBlock)(UIImage * _Nullable image,NSData * _Nullable imageData, NSError * _Nullable error, NSURL * _Nullable imageURL);
+typedef void(^CGXLaunchExternalCompletionBlock)(UIImage * _Nullable image,NSData * _Nullable imageData, NSError * _Nullable error, NSURL * _Nullable imageURL);
 
 @interface CGXLaunchScreenImageManager : NSObject
 
 +(nonnull instancetype )sharedManager;
-- (void)loadImageWithURL:(nullable NSURL *)url options:(CGXLaunchScreenImageOptions)options progress:(nullable CGXLaunchScreenDownloadProgressBlock)progressBlock completed:(nullable XHExternalCompletionBlock)completedBlock;
+- (void)loadImageWithURL:(nullable NSURL *)url options:(CGXLaunchScreenImageOptions)options progress:(nullable CGXLaunchScreenDownloadProgressBlock)progressBlock completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock;
 
 @end

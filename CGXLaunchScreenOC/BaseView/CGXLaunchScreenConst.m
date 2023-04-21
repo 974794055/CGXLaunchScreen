@@ -8,8 +8,8 @@
 
 #import "CGXLaunchScreenConst.h"
 
-NSString *const XHCacheImageUrlStringKey = @"XHCacheImageUrlStringKey";
-NSString *const XHCacheVideoUrlStringKey = @"XHCacheVideoUrlStringKey";
+NSString *const GXLaunchCacheImageUrlStringKey = @"GXLaunchCacheImageUrlStringKey";
+NSString *const GXLaunchCacheVideoUrlStringKey = @"GXLaunchCacheVideoUrlStringKey";
 
 NSString *const CGXLaunchScreenWaitDataDurationArriveNotification = @"CGXLaunchScreenWaitDataDurationArriveNotification";
 NSString *const CGXLaunchScreenDetailPageWillShowNotification = @"CGXLaunchScreenDetailPageWillShowNotification";

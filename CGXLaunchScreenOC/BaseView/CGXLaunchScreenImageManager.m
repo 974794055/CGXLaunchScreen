@@ -34,7 +34,7 @@
     return self;
 }
 
-- (void)loadImageWithURL:(nullable NSURL *)url options:(CGXLaunchScreenImageOptions)options progress:(nullable CGXLaunchScreenDownloadProgressBlock)progressBlock completed:(nullable XHExternalCompletionBlock)completedBlock{
+- (void)loadImageWithURL:(nullable NSURL *)url options:(CGXLaunchScreenImageOptions)options progress:(nullable CGXLaunchScreenDownloadProgressBlock)progressBlock completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock{
     if(!options) options = CGXLaunchScreenImageDefault;
     if(options & CGXLaunchScreenImageOnlyLoad){
         [_downloader downloadImageWithURL:url progress:progressBlock completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error) {

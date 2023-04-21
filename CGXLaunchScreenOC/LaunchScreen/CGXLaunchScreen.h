@@ -20,7 +20,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CGXLaunchScreenConfiguration.h"
-#import "CGXLaunchScreenConst.h"
+
 #import "CGXLaunchImageView.h"
 
 #import "CGXLaunchScreenDownloader.h"
@@ -32,9 +32,7 @@
 
 #import "CGXLaunchScreenImageView.h"
 
-#import "CGXLaunchAnimatedImage.h"
 
-#import "CGXLaunchAnimatedImageView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @class CGXLaunchScreen;

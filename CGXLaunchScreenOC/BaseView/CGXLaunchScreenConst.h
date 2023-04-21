@@ -10,22 +10,28 @@
 
 #define CGXLaunchScreenDeprecated(instead) __attribute__((deprecated(instead)))
 
-#define XHWeakSelf __weak typeof(self) weakSelf = self;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000 // 当前Xcode支持iOS8及以上
+#define GXLaunchScreenW ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.width)
+#define GXLaunchScreenH ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.height)
+#else
+#define GXLaunchScreenW   [UIScreen mainScreen].bounds.size.width
+#define GXLaunchScreenH  [UIScreen mainScreen].bounds.size.height
+#endif
 
-#define XH_ScreenW    [UIScreen mainScreen].bounds.size.width
-#define XH_ScreenH    [UIScreen mainScreen].bounds.size.height
+#define GXLaunchFullScreen ({\
+    BOOL iPhoneXSeries = NO; \
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {\
+       iPhoneXSeries = YES;\
+    }\
+    if (@available(iOS 11.0, *)) { \
+       UIWindow *window = [[[UIApplication sharedApplication] delegate] window]; \
+       iPhoneXSeries = window.safeAreaInsets.bottom > 0; \
+    } \
+      iPhoneXSeries; \
+})
 
-#define XH_IPHONEX  ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
-#define XH_IPHONEXR    ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) : NO)
-#define XH_IPHONEXSMAX    ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) : NO)
-
-#define XH_IPHONEXS    ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
-
-#define XH_FULLSCREEN ((XH_IPHONEX || XH_IPHONEXR || XH_IPHONEXS || XH_IPHONEXSMAX) ? YES : NO)
-
-
-#define XHISURLString(string)  ([string hasPrefix:@"https://"] || [string hasPrefix:@"http://"]) ? YES:NO
-#define XHStringContainsSubString(string,subString)  ([string rangeOfString:subString].location == NSNotFound) ? NO:YES
+#define GXLaunchIsURLString(string)  ([string hasPrefix:@"https://"] || [string hasPrefix:@"http://"]) ? YES:NO
+#define GXLaunchStringContainsSubString(string,subString)  ([string rangeOfString:subString].location == NSNotFound) ? NO:YES
 
 #ifdef DEBUG
 #define CGXLaunchScreenLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
@@ -33,7 +39,7 @@
 #define CGXLaunchScreenLog(...)
 #endif
 
-#define XHISGIFTypeWithData(data)\
+#define GXLaunchISGIFTypeWithData(data)\
 ({\
 BOOL result = NO;\
 if(!data) result = NO;\
@@ -43,14 +49,14 @@ if(c == 0x47) result = YES;\
 (result);\
 })
 
-#define XHISVideoTypeWithPath(path)\
+#define GXLaunchISVideoTypeWithPath(path)\
 ({\
 BOOL result = NO;\
 if([path hasSuffix:@".mp4"])  result =  YES;\
 (result);\
 })
 
-#define XHDataWithFileName(name)\
+#define GXLaunchDataWithFileName(name)\
 ({\
 NSData *data = nil;\
 NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:nil];\
@@ -60,20 +66,20 @@ if([[NSFileManager defaultManager] fileExistsAtPath:path]){\
 (data);\
 })
 
-#define DISPATCH_SOURCE_CANCEL_SAFE(time) if(time)\
+#define GXLaunchDISPATCH_SOURCE_CANCEL_SAFE(time) if(time)\
 {\
 dispatch_source_cancel(time);\
 time = nil;\
 }
 
-#define REMOVE_FROM_SUPERVIEW_SAFE(view) if(view)\
+#define GXLaunchREMOVE_FROM_SUPERVIEW_SAFE(view) if(view)\
 {\
 [view removeFromSuperview];\
 view = nil;\
 }
 
-UIKIT_EXTERN NSString *const XHCacheImageUrlStringKey;
-UIKIT_EXTERN NSString *const XHCacheVideoUrlStringKey;
+UIKIT_EXTERN NSString *const GXLaunchCacheImageUrlStringKey;
+UIKIT_EXTERN NSString *const GXLaunchCacheVideoUrlStringKey;
 
 UIKIT_EXTERN NSString *const CGXLaunchScreenWaitDataDurationArriveNotification;
 UIKIT_EXTERN NSString *const CGXLaunchScreenDetailPageWillShowNotification;

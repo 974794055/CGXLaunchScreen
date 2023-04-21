@@ -33,7 +33,7 @@
     return NO;
 }
 
-+(void)async_saveImageData:(NSData *)data imageURL:(NSURL *)url completed:(nullable SaveCompletionBlock)completedBlock{
++(void)async_saveImageData:(NSData *)data imageURL:(NSURL *)url completed:(nullable CGXLaunchSaveCompletionBlock)completedBlock{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         BOOL result = [self saveImageData:data imageURL:url];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -50,7 +50,7 @@
     return  result;
 }
 
-+(void)async_saveVideoAtLocation:(NSURL *)location URL:(NSURL *)url completed:(nullable SaveCompletionBlock)completedBlock{
++(void)async_saveVideoAtLocation:(NSURL *)location URL:(NSURL *)url completed:(nullable CGXLaunchSaveCompletionBlock)completedBlock{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
        BOOL result = [self saveVideoAtLocation:location URL:url];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -120,25 +120,25 @@
 +(void)async_saveImageUrl:(NSString *)url{
     if(url==nil) return;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[NSUserDefaults standardUserDefaults] setObject:url forKey:XHCacheImageUrlStringKey];
+        [[NSUserDefaults standardUserDefaults] setObject:url forKey:GXLaunchCacheImageUrlStringKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     });
 }
 
 +(NSString *)getCacheImageUrl{
-   return [[NSUserDefaults standardUserDefaults] objectForKey:XHCacheImageUrlStringKey];
+   return [[NSUserDefaults standardUserDefaults] objectForKey:GXLaunchCacheImageUrlStringKey];
 }
 
 +(void)async_saveVideoUrl:(NSString *)url{
     if(url==nil) return;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[NSUserDefaults standardUserDefaults] setObject:url forKey:XHCacheVideoUrlStringKey];
+        [[NSUserDefaults standardUserDefaults] setObject:url forKey:GXLaunchCacheVideoUrlStringKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     });
 }
 
 +(NSString *)getCacheVideoUrl{
-  return [[NSUserDefaults standardUserDefaults] objectForKey:XHCacheVideoUrlStringKey];
+  return [[NSUserDefaults standardUserDefaults] objectForKey:GXLaunchCacheVideoUrlStringKey];
 }
 
 #pragma mark - 其他
@@ -167,7 +167,7 @@
         NSArray *allFilePaths = [self allFilePathWithDirectoryPath:[self CGXLaunchScreenCachePath]];
         NSArray *exceptImagePaths = [self filePathsWithFileUrlArray:exceptImageUrlArray videoType:NO];
         [allFilePaths enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if(![exceptImagePaths containsObject:obj] && !XHISVideoTypeWithPath(obj)){
+            if(![exceptImagePaths containsObject:obj] && !GXLaunchISVideoTypeWithPath(obj)){
                 [[NSFileManager defaultManager] removeItemAtPath:obj error:nil];
             }
         }];
@@ -191,7 +191,7 @@
         NSArray *allFilePaths = [self allFilePathWithDirectoryPath:[self CGXLaunchScreenCachePath]];
         NSArray *exceptVideoPaths = [self filePathsWithFileUrlArray:exceptVideoUrlArray videoType:YES];
         [allFilePaths enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if(![exceptVideoPaths containsObject:obj] && XHISVideoTypeWithPath(obj)){
+            if(![exceptVideoPaths containsObject:obj] && GXLaunchISVideoTypeWithPath(obj)){
                 [[NSFileManager defaultManager] removeItemAtPath:obj error:nil];
             }
         }];

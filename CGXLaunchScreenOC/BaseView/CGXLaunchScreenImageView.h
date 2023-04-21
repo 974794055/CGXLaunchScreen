@@ -7,34 +7,12 @@
 //
 
 #import "CGXLaunchAnimatedImageView.h"
-
-//#import <UIKit/UIKit.h>
-//#import <AVFoundation/AVFoundation.h>
-//#import <MediaPlayer/MediaPlayer.h>
-//#import <AVKit/AVKit.h>
-
-#if __has_include(<CGXLaunchAnimatedImage/CGXLaunchAnimatedImage.h>)
-#import <CGXLaunchAnimatedImage/CGXLaunchAnimatedImage.h>
-#else
-#import "CGXLaunchAnimatedImage.h"
-#endif
-
-#if __has_include(<CGXLaunchAnimatedImage/CGXLaunchAnimatedImageView.h>)
-#import <CGXLaunchAnimatedImage/CGXLaunchAnimatedImageView.h>
-#else
-#import "CGXLaunchAnimatedImageView.h"
-#endif
-
 #import "CGXLaunchScreenImageManager.h"
-#import "CGXLaunchAnimatedImage.h"
-#import "CGXLaunchScreenConst.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CGXLaunchScreenImageView : CGXLaunchAnimatedImageView
 @property (nonatomic, copy) void(^click)(CGPoint point);
-
-
 @end
 
 @interface CGXLaunchScreenImageView (CGXLaunchScreenCache)
@@ -68,17 +46,17 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param url 图片url
  @param placeholder 占位图
- @param completedBlock XHExternalCompletionBlock
+ @param completedBlock CGXLaunchExternalCompletionBlock
  */
-- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder completed:(nullable XHExternalCompletionBlock)completedBlock;
+- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock;
 
 /**
  设置url图片
 
  @param url 图片url
- @param completedBlock XHExternalCompletionBlock
+ @param completedBlock CGXLaunchExternalCompletionBlock
  */
-- (void)gx_setImageWithURL:(nonnull NSURL *)url completed:(nullable XHExternalCompletionBlock)completedBlock;
+- (void)gx_setImageWithURL:(nonnull NSURL *)url completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock;
 
 
 /**
@@ -87,9 +65,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param url 图片url
  @param placeholder 占位图
  @param options CGXLaunchScreenImageOptions
- @param completedBlock XHExternalCompletionBlock
+ @param completedBlock CGXLaunchExternalCompletionBlock
  */
-- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder options:(CGXLaunchScreenImageOptions)options completed:(nullable XHExternalCompletionBlock)completedBlock;
+- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder options:(CGXLaunchScreenImageOptions)options completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock;
 
 /**
  设置url图片
@@ -99,9 +77,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param GIFImageCycleOnce gif是否只循环播放一次
  @param options CGXLaunchScreenImageOptions
  @param cycleOnceFinishBlock gif播放完回调(GIFImageCycleOnce = YES 有效)
- @param completedBlock XHExternalCompletionBlock
+ @param completedBlock CGXLaunchExternalCompletionBlock
  */
-- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder GIFImageCycleOnce:(BOOL)GIFImageCycleOnce options:(CGXLaunchScreenImageOptions)options GIFImageCycleOnceFinish:(void(^_Nullable)(void))cycleOnceFinishBlock completed:(nullable XHExternalCompletionBlock)completedBlock ;
+- (void)gx_setImageWithURL:(nonnull NSURL *)url placeholderImage:(nullable UIImage *)placeholder GIFImageCycleOnce:(BOOL)GIFImageCycleOnce options:(CGXLaunchScreenImageOptions)options GIFImageCycleOnceFinish:(void(^_Nullable)(void))cycleOnceFinishBlock completed:(nullable CGXLaunchExternalCompletionBlock)completedBlock ;
 
 @end
 

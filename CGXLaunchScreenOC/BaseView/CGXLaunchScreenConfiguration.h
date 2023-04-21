@@ -9,30 +9,29 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CGXLaunchScreenButton.h"
-#import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 #import "CGXLaunchScreenImageManager.h"
-#import "CGXLaunchScreenConst.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** 显示完成动画时间默认时间 */
-static CGFloat const showFinishAnimateTimeDefault = 0.8;
+static CGFloat const CGXLaunchShowFinishAnimateTimeDefault = 0.8;
 
 /** 显示完成动画类型 */
-typedef NS_ENUM(NSInteger , ShowFinishAnimate) {
+typedef NS_ENUM(NSInteger , CGXLaunchShowFinishAnimate) {
     /** 无动画 */
-    ShowFinishAnimateNone = 1,
+    CGXLaunchShowFinishAnimateNone = 1,
     /** 普通淡入(default) */
-    ShowFinishAnimateFadein = 2,
+    CGXLaunchShowFinishAnimateFadein = 2,
     /** 放大淡入 */
-    ShowFinishAnimateLite = 3,
+    CGXLaunchShowFinishAnimateLite = 3,
     /** 左右翻转(类似网易云音乐) */
-    ShowFinishAnimateFlipFromLeft = 4,
+    CGXLaunchShowFinishAnimateFlipFromLeft = 4,
     /** 下上翻转 */
-    ShowFinishAnimateFlipFromBottom = 5,
+    CGXLaunchShowFinishAnimateFlipFromBottom = 5,
     /** 向上翻页 */
-    ShowFinishAnimateCurlUp = 6,
+    CGXLaunchShowFinishAnimateCurlUp = 6,
 };
 
 #pragma mark - 公共属性
@@ -41,23 +40,20 @@ typedef NS_ENUM(NSInteger , ShowFinishAnimate) {
 /** 停留时间(default 5 ,单位:秒) */
 @property(nonatomic,assign)NSInteger duration;
 
-/** 跳过按钮类型(default SkipTypeTimeText) */
-@property(nonatomic,assign)SkipType skipButtonType;
+/** 跳过按钮类型(default CGXLaunchSkipTypeTimeText) */
+@property(nonatomic,assign)CGXLaunchSkipType skipButtonType;
 
-/** 显示完成动画(default ShowFinishAnimateFadein) */
-@property(nonatomic,assign)ShowFinishAnimate showFinishAnimate;
+/** 显示完成动画(default CGXLaunchShowFinishAnimateFadein) */
+@property(nonatomic,assign)CGXLaunchShowFinishAnimate CGXLaunchShowFinishAnimate;
 
 /** 显示完成动画时间(default 0.8 , 单位:秒) */
-@property(nonatomic,assign)CGFloat showFinishAnimateTime;
+@property(nonatomic,assign)CGFloat CGXLaunchShowFinishAnimateTime;
 
 /** 设置开屏广告的frame(default [UIScreen mainScreen].bounds) */
 @property (nonatomic,assign) CGRect frame;
 
 /** 程序从后台恢复时,是否需要展示广告(defailt NO) */
 @property (nonatomic,assign) BOOL showEnterForeground;
-
-/** 点击打开页面地址(请使用openModel,点击事件代理方法请对应使用CGXLaunchScreen:clickAndOpenModel:clickPoint:) */
-@property(nonatomic,copy)NSString *openURLString CGXLaunchScreenDeprecated("请使用openModel,点击事件代理方法请对应使用CGXLaunchScreen:clickAndOpenModel:clickPoint:");
 
 /** 点击打开页面参数 */
 @property (nonatomic, strong) id openModel;
@@ -94,9 +90,6 @@ typedef NS_ENUM(NSInteger , ShowFinishAnimate) {
 
 /** video本地名或网络链接URL string */
 @property(nonatomic,copy)NSString *videoNameOrURLString;
-
-/** 视频缩放模式(default MPMovieScalingModeAspectFill) */
-@property(nonatomic,assign)MPMovieScalingMode scalingMode CGXLaunchScreenDeprecated("请使用videoGravity");
 
 /** 视频缩放模式(default AVLayerVideoGravityResizeAspectFill) */
 @property (nonatomic, copy) AVLayerVideoGravity videoGravity;

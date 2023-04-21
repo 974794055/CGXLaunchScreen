@@ -7,7 +7,7 @@
 // 
 
 #import "CGXLaunchScreenConfiguration.h"
-
+#import "CGXLaunchScreenConst.h"
 #pragma mark - 公共
 @implementation CGXLaunchScreenConfiguration
 
@@ -30,11 +30,11 @@
     //图片填充模式
     configuration.contentMode = UIViewContentModeScaleToFill;
     //广告显示完成动画
-    configuration.showFinishAnimate =ShowFinishAnimateFadein;
+    configuration.CGXLaunchShowFinishAnimate =CGXLaunchShowFinishAnimateFadein;
      //显示完成动画时间
-    configuration.showFinishAnimateTime = showFinishAnimateTimeDefault;
+    configuration.CGXLaunchShowFinishAnimateTime = CGXLaunchShowFinishAnimateTimeDefault;
     //跳过按钮类型
-    configuration.skipButtonType = SkipTypeTimeText;
+    configuration.skipButtonType = CGXLaunchSkipTypeTimeText;
     //后台返回时,是否显示广告
     configuration.showEnterForeground = NO;
     return configuration;
@@ -56,11 +56,11 @@
     //是否只循环播放一次
     configuration.videoCycleOnce = NO;
     //广告显示完成动画
-    configuration.showFinishAnimate =ShowFinishAnimateFadein;
+    configuration.CGXLaunchShowFinishAnimate =CGXLaunchShowFinishAnimateFadein;
     //显示完成动画时间
-    configuration.showFinishAnimateTime = showFinishAnimateTimeDefault;
+    configuration.CGXLaunchShowFinishAnimateTime = CGXLaunchShowFinishAnimateTimeDefault;
     //跳过按钮类型
-    configuration.skipButtonType = SkipTypeTimeText;
+    configuration.skipButtonType = CGXLaunchSkipTypeTimeText;
     //后台返回时,是否显示广告
     configuration.showEnterForeground = NO;
     //是否静音播放
