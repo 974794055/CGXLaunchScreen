@@ -467,9 +467,11 @@ static inline BOOL CGXLaunchisIPhoneX() {
  */
 -(void)gxLaunchAd:(CGXLaunchScreen *)launchAd customSkipView:(UIView *)customSkipView duration:(NSInteger)duration{
     //设置自定义跳过按钮时间
-    UIButton *button = (UIButton *)customSkipView;//此处转换为你之前的类型
-    //设置时间
-    [button setTitle:[NSString stringWithFormat:@"自定义%lds",duration] forState:UIControlStateNormal];
+    if([customSkipView isKindOfClass:[UIButton class]]){
+        UIButton *button = (UIButton *)customSkipView;//此处转换为你之前的类型
+        //设置时间
+        [button setTitle:[NSString stringWithFormat:@"自定义%lds",duration] forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - CGXLaunchScreen delegate - 其他
